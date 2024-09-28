@@ -84,16 +84,10 @@ func introduce (nama, gender, pekerjaan, usia string) (kalimat string) {
 }
 
 func buahFavorit(nama string, buah ...string) (kalimat string) {
-	var jumlahBuah string
 
-	for i := 0; i < len(buah); i++ {
-		if i == len(buah) - 1 {
-			jumlahBuah += `"` + buah[i] + `"`
-		} else {
-			jumlahBuah += `"` + buah[i] + `", `
-		}
-	}
+	buahList := strings.Join(buah,`", "`)
+	buahList = fmt.Sprintf(`"%s"`, buahList)
 
-	kalimat = "halo saya " + strings.ToLower(nama) + " dan buah favorit saya adalah " + jumlahBuah
+	kalimat = "halo saya " + strings.ToLower(nama) + " dan buah favorit saya adalah " + buahList
 	return kalimat
 }
